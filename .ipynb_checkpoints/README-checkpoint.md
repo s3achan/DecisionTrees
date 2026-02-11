@@ -1,79 +1,97 @@
-This repository demonstrates **Decision Tree classification** concepts from the ground up, combining **manual impurity calculations** with **library-based implementations** using a realistic **Formula 1 race outcome dataset**.
+# 🏎️ F1 Podium Prediction using Decision Trees  
+### Gini Impurity & Entropy (Information Gain)
 
-The project is designed to show how **data noise, feature interactions, and tree depth** influence model behavior, interpretability, and overfitting.
+This project demonstrates how **Decision Tree classifiers** work from **start to finish**, both **manually (from first principles)** and using **scikit-learn**. The goal is to predict whether a Formula 1 driver finishes on the podium based on race conditions.
+
+The notebook covers:
+- Entropy and Gini impurity theory  
+- Manual Information Gain calculations  
+- Root node and split selection  
+- Decision tree visualization  
+- Prediction extraction  
+- Gini vs Entropy comparison  
+- Performance optimization of split calculations  
 
 ---
 
-## 📌 Project Objectives
+## 📊 Dataset Overview
 
-- Understand **Gini impurity** and **Information Gain**
-- Implement **manual decision tree logic**
-- Compare **noisy vs less-noisy datasets**
-- Train and visualize **DecisionTreeClassifier** using scikit-learn
-- Interpret decision tree splits in a **domain-specific context (F1 racing)**
-
----
-
-## 🏎️ Dataset Overview
-
-The dataset models whether a driver finishes on the **podium** based on race-day conditions.
+The dataset is a **synthetic Formula 1 race dataset**, created for interpretability and learning purposes.
 
 ### Features
-- `Starting_Position` — Front / Mid / Back
-- `Weather` — Dry / Wet
-- `Pit_Strategy` — OneStop / TwoStop
-- `Safety_Car` — Yes / No
+- **Weather**: Dry, Wet  
+- **Starting_Position**: Front, Mid, Back  
+- **Pit_Strategy**: OneStop, TwoStop  
+- **Safety_Car**: Yes, No  
 
-### Target
-- `PodiumFinish` — Yes / No
-
-Two dataset variants are used:
-- **Highly noisy dataset** → demonstrates overfitting and deep trees
-- **Less noisy dataset** → highlights clear rules such as  
-  *Starting position combined with safety car presence in wet conditions*
+### Target Variable
+- **PodiumFinish**: Yes, No  
 
 ---
 
-## 🧠 Key Concepts Covered
+## 🌳 Decision Tree Methodology
 
-- Gini impurity calculation (manual)
-- Information gain (Gini reduction)
-- Root node selection
-- Feature interaction effects
-- Tree depth vs interpretability
-- Impact of noise on decision trees
-- Overfitting and the need for pruning
+Decision Trees split data recursively to reduce impurity and improve class separation.
+
+This project implements **two impurity measures**:
 
 ---
 
-## 🌳 Model Implementation
+### 1️⃣ Entropy & Information Gain (ID3-style)
 
-- Categorical features are **one-hot encoded**
-- Decision tree trained using:
-  - `criterion='gini'`
-  - Controlled depth for interpretability
-- Trees are visualized using `plot_tree`
-- Node-level interpretations provided for each split
+- Measures **uncertainty** in the target variable  
+- Selects splits that **maximize Information Gain**  
+- More sensitive to class distribution changes  
 
----
+### 2️⃣ Gini Impurity (CART-style)
 
-## 📊 Example Insight
+- Measures **probability of misclassification**  
+- Faster to compute than entropy  
+- Default criterion used by scikit-learn  
 
-> Starting position is the dominant predictor of podium finishes.  
-> However, under wet conditions with safety car deployment, mid-grid drivers gain a strategic advantage, demonstrating how feature interactions shape decision boundaries.
 
----
+## 🔍 Gini vs Entropy Comparison
 
-## 🛠️ Tech Stack
+Both **Gini-based** and **Entropy-based** decision trees are trained and evaluated.
 
-- Python
-- pandas
-- numpy
-- scikit-learn
-- matplotlib
-- Jupyter Notebook
+### Observations
+- Both models produce **identical predictions** on this dataset
+- Early splits (Starting Position, Weather) are consistent
+- Differences mainly appear in **split order and depth** when the data is noisy
 
 ---
 
-## 📁 Repository Structure
+## 📈 Results Summary
 
+- **Accuracy:** 78.6% (11 out of 14 predictions correct)
+- Most errors occur for **mid-grid or back-grid starters**
+- **Starting position** is the strongest predictor
+- Weather, safety car, and pit strategy act as **secondary refinements**
+
+---
+
+## 🧠 Key Takeaways
+
+- Gini and Entropy use the same split logic with different impurity measures
+- Gini is faster and widely used in practice
+- Entropy offers stronger theoretical interpretation
+- Predictions are made via **majority vote at leaf nodes**
+- Optimization improves clarity and scalability
+
+---
+
+## 📂 Repository Contents
+
+- **F1-DecisionTrees-Entropy.ipynb** – Full end-to-end notebook
+- **README.md** – Project overview and methodology
+- Decision tree visualizations
+- Manual entropy, gini, and information gain calculations
+
+---
+
+## 🚀 Future Improvements
+
+- Add pruning and depth regularization
+- Compare with Random Forest and Gradient Boosting
+- Apply to real-world motorsport or Kaggle datasets
+- Extend to probability calibration and threshold tuning
