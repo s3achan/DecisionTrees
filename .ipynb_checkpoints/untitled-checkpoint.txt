@@ -1,0 +1,22 @@
+#data = {
+    'Weather': [
+        'Dry','Wet','Dry','Wet','Dry','Wet','Dry','Wet','Dry','Wet',
+        'Dry','Wet','Dry','Wet'
+    ],
+    'Starting_Position': [
+        'Front','Front','Mid','Mid','Back','Back','Front','Mid','Back','Front',
+        'Mid','Back','Front','Back'
+    ],
+    'Pit_Strategy': [
+        'TwoStop','OneStop','TwoStop','OneStop','TwoStop','OneStop','OneStop','TwoStop','OneStop','TwoStop',
+        'TwoStop','OneStop','TwoStop','OneStop'
+    ],
+    'Safety_Car': [
+        'Yes','No','Yes','No','Yes','No','No','Yes','No','Yes',
+        'Yes','No','Yes','No'
+    ],
+    'PodiumFinish': [
+        'No','Yes','Yes','No','Yes','No','No','Yes','Yes','No',
+        'No','Yes','Yes','No'
+    ]
+}
