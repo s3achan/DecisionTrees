@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # 🌳 Decision Trees — From Theory to Practice (F1 Case Study)
+=======
+# 🌳 Decision Trees — From Theory to Practice 
+>>>>>>> fix/push-commits
 
 This repository demonstrates **Decision Tree classification** concepts from the ground up, combining **manual impurity calculations** with **library-based implementations** using a realistic **Formula 1 race outcome dataset**.
 
